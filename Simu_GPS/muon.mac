@@ -1,0 +1,17 @@
+/control/verbose 2
+/run/verbose 2
+/tracking/verbose 0
+/run/initialize
+
+#mu-point mu- source
+#
+/gps/particle mu-
+/gps/pos/type Point
+/gps/pos/centre
+/gps/ang/type/iso
+/gps/ene/type User
+/gps/hist/type energy
+/gps/hist/point 1.0 0.
+/gps/hist/point 2.0 5.
+/gps/hist/point 7.0 1.
+/gps/hist/point 10. 1.

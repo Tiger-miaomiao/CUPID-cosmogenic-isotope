@@ -1,0 +1,48 @@
+#include "physicsList.hh"
+#include "globals.hh"
+#include "G4SystemOfUnits.hh"
+
+#include "G4ProcessManager.hh"
+#include "G4PhysicsListHelper.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4Proton.hh"
+#include "G4Electron.hh"
+#include "G4Positron.hh"
+#include "G4Gamma.hh"
+
+#include "G4EmStandardPhysics.hh"
+#include "G4PhotoElectricEffect.hh"
+#include "G4ComptonScattering.hh"
+#include "G4GammaConversion.hh"
+
+PhysicsList::PhysicsList() : G4VUserPhysicsList()
+{}
+
+PhysicsList::~PhysicsList()
+{}
+
+void PhysicsList::ConstructParticle()
+{
+	G4Proton::ProtonDefinition();
+	G4Electron::ElectronDefinition();
+	G4Positron::PositronDefinition();
+	G4Gamma::GammaDefinition();
+}
+
+void PhysicsList::ConstructProcess()
+{
+	AddTransportation();
+	ConstructEM();
+}
+
+void PhysicsList::ConstructEM()
+{
+	G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
+
+	G4ParticleDefinition* particle = G4Gamma::GammaDefinition();
+
+	ph->RegisterProcess(new G4PhotoElectricEffect(), particle);
+	ph->RegisterProcess(new G4ComptonScattering(), particle);
+	ph->RegisterProcess(new G4GammaConversion(), particle);
+}
+

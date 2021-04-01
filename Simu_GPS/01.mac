@@ -1,0 +1,22 @@
+/control/verbose 2
+/run/verbose 2
+/tracking/verbose 0
+/run/initialize
+
+#top shield copper
+/gps/pos/type Volume
+/gps/pos/shape Para
+/gps/centre 0. 0. 1300. mm
+/gps/pos/halfx 350 mm
+/gps/pos/halfy 350 mm
+/gps/pos/halfz 60 mm
+/gps/pos/paralp 0
+/gps/pos/parthe 0
+/gps/pos/parphi 0
+/gps/pos/confine ICS
+/gps/ang/type iso
+/grdm/allVolumes
+/gps/particle ion
+/gps/ion 27 56 0 0
+
+/run/beamOn 100000
